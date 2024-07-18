@@ -25,3 +25,5 @@ This Flutter project showcases a robust application architecture, focusing on cl
 Video Link (https://drive.google.com/file/d/1Xhyb151n3e-aCqqpcwGMU-dfzeSCzM9X/view?usp=sharing)
 
 ## Screenshots
+![image](https://github.com/user-attachments/assets/6403df72-343e-4f7d-8895-b80586644fd1)
+
