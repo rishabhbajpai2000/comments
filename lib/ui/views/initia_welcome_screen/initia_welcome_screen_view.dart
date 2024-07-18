@@ -24,9 +24,15 @@ class InitiaWelcomeScreenView
         child: Column(
           children: [
             Expanded(child: Container()),
-            Text(
+            Image.asset(
+              "assets/initialWelcomeScreen.png",
+            ),
+            const Text(
               "Welcome",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: 30,
+                  color: kcLightBlue,
+                  fontWeight: FontWeight.bold),
             ),
             Expanded(child: Container()),
             InkWell(

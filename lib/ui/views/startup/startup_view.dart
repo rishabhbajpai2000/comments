@@ -15,19 +15,24 @@ class StartupView extends StackedView<StartupViewModel> {
     StartupViewModel viewModel,
     Widget? child,
   ) {
-    return const Scaffold(
+    return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
+            Image.asset(
+              'assets/SplashScreen.png',
+              // height: 200,
+            ),
+            const Text(
               'Comments',
               style: TextStyle(
                   fontSize: 40,
                   fontWeight: FontWeight.w900,
                   color: kcLightBlue),
             ),
-            Row(
+            const Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text('Loading ...',
