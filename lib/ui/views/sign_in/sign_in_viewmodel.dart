@@ -9,10 +9,10 @@ class SignInViewModel extends FormViewModel {
   final LoginService _loginService = locator<LoginService>();
   final String loginProcessing = "LoginProcessing";
   Future<void> login() async {
-    setBusyForObject(loginProcessing, true);
+    setBusy(true);
     if (formKey.currentState!.validate()) {
       await _loginService.signIn(email: emailValue!, password: passwordValue!);
     }
-    setBusyForObject(loginProcessing, false);
+    setBusy(false);
   }
 }

@@ -11,16 +11,15 @@ class SignUpViewModel extends FormViewModel {
   final String signProcessing = "SignProcessing";
   final _logger = getLogger("SignUpViewModel");
   final LoginService _loginService = locator<LoginService>();
-  void signUp() {
-    setBusyForObject(signProcessing, true);
+  Future<void> signUp() async {
+    setBusy(true);
     if (formKey.currentState!.validate()) {
       _logger.i("Form validation passed.");
-      _loginService.signUp(
+      await _loginService.signUp(
           name: nameValue!, email: emailValue!, password: passwordValue!);
     } else {
       _logger.e("Form validation failed.");
     }
-
-    setBusyForObject(signProcessing, false);
+    setBusy(false);
   }
 }

@@ -18,8 +18,7 @@ class StartupViewModel extends BaseViewModel {
     if (isLoggedIn) {
       _navigationService.replaceWithHomeView();
     } else {
-      _navigationService.navigateToSignInView();
+      _navigationService.replaceWithInitiaWelcomeScreenView();
     }
-    // _navigationService.replaceWithHomeView();
   }
 }

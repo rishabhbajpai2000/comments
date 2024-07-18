@@ -55,11 +55,12 @@ class SignInView extends StackedView<SignInViewModel> with $SignInView {
               ),
               Expanded(child: Container()),
               LoginSignUpButton(
-                value: viewModel.busy(viewModel.loginProcessing)
-                    ? "Logging In..."
-                    : "Login",
+                value: "Login",
+                isActive: !viewModel.isBusy,
                 onPressed: () async {
-                  if (viewModel.busy(viewModel.loginProcessing)) return;
+                  if (viewModel.isBusy) {
+                    return;
+                  }
                   await viewModel.login();
                 },
               ),

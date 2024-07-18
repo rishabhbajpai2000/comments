@@ -1,5 +1,5 @@
 import 'package:comments/app/app.locator.dart';
-import 'package:comments/app/app.logger.dart';
+
 import 'package:comments/models/comment.dart';
 import 'package:comments/services/comments_service.dart';
 import 'package:comments/services/login_service.dart';
@@ -8,6 +8,7 @@ import 'package:stacked/stacked.dart';
 
 class HomeViewModel extends BaseViewModel {
   List<Comment>? comments;
+  String? name;
   final CommentsService _commentsService = locator<CommentsService>();
   final LoginService _loginService = locator<LoginService>();
   final remoteConfig = FirebaseRemoteConfig.instance;
@@ -17,9 +18,9 @@ class HomeViewModel extends BaseViewModel {
     rebuildUi();
     comments = await _commentsService.getComments();
     if (showFullEmail == false) {
-      comments!.forEach((comment) {
+      for (var comment in comments!) {
         comment.email = trimEmail(comment.email);
-      });
+      }
     }
 
     rebuildUi();
@@ -40,5 +41,10 @@ class HomeViewModel extends BaseViewModel {
   Future<void> logout() async {
     await _loginService.logout();
     notifyListeners();
+  }
+
+  void getName() async{
+    name =await _loginService.getName();
+    rebuildUi();
   }
 }
