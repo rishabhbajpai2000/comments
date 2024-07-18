@@ -3,10 +3,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'comment.g.dart';
 part 'comment.freezed.dart';
 
-@freezed
+@unfreezed
 class Comment with _$Comment {
-  const Comment._();
-  const factory Comment({
+  Comment._();
+  factory Comment({
     required int postId,
     required int id,
     required String name,

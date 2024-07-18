@@ -1,6 +1,7 @@
 import 'package:comments/models/comment.dart';
 import 'package:comments/ui/common/app_colors.dart';
 import 'package:comments/ui/common/ui_helpers.dart';
+import 'package:comments/ui/common/widgets/CommentTile.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -26,7 +27,9 @@ class HomeView extends StackedView<HomeViewModel> {
         actions: [
           IconButton(
             onPressed: () {
-              viewModel.getComments();
+              final showFullEmail =
+                  viewModel.remoteConfig.getBool("showFullEmail");
+              viewModel.getComments(showFullEmail: showFullEmail);
             },
             icon: const Icon(Icons.refresh, color: Colors.white),
           ),
@@ -65,98 +68,14 @@ class HomeView extends StackedView<HomeViewModel> {
 
   @override
   void onViewModelReady(HomeViewModel viewModel) {
-    viewModel.getComments();
+    final showFullEmail = viewModel.remoteConfig.getBool("showFullEmail");
+    viewModel.getComments(showFullEmail: showFullEmail);
     super.onViewModelReady(viewModel);
-  }
-}
 
-class CommentTile extends StatelessWidget {
-  const CommentTile({
-    super.key,
-    required this.comment,
-  });
-  final Comment comment;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CircleAvatar(
-                  backgroundColor: kcDarkGreyColor,
-                  radius: 30,
-                  child: Text(
-                    comment.name[0].toUpperCase(),
-                    style: const TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                horizontalSpaceSmall,
-                SizedBox(
-                  width: 250,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      NameEmailRow(heading: 'Name', value: comment.name),
-                      NameEmailRow(heading: 'Email', value: comment.email),
-                      SizedBox(
-                        height: 50,
-                        child: Text(
-                          comment.body,
-                          style: const TextStyle(
-                            fontSize: 16,
-                          ),
-                          maxLines: 5,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          )),
-    );
-  }
-}
-
-class NameEmailRow extends StatelessWidget {
-  const NameEmailRow({super.key, required this.heading, required this.value});
-
-  final String heading;
-  final String value;
-  String trimString(String value) {
-    if (value.length > 18) {
-      return '${value.substring(0, 18)}...';
-    }
-    return value;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text("${heading}: ", style: const TextStyle(color: kcDarkGreyColor)),
-        Text(
-          trimString(value),
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-          overflow: TextOverflow.ellipsis,
-        ),
-      ],
-    );
+    viewModel.remoteConfig.onConfigUpdated.listen((event) async {
+      await viewModel.remoteConfig.activate();
+      final showFullEmail = viewModel.remoteConfig.getBool("showFullEmail");
+      viewModel.getComments(showFullEmail: showFullEmail);
+    });
   }
 }

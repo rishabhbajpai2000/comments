@@ -21,10 +21,15 @@ Comment _$CommentFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Comment {
   int get postId => throw _privateConstructorUsedError;
+  set postId(int value) => throw _privateConstructorUsedError;
   int get id => throw _privateConstructorUsedError;
+  set id(int value) => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  set name(String value) => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  set email(String value) => throw _privateConstructorUsedError;
   String get body => throw _privateConstructorUsedError;
+  set body(String value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -138,7 +143,7 @@ class __$$CommentImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$CommentImpl extends _Comment {
-  const _$CommentImpl(
+  _$CommentImpl(
       {required this.postId,
       required this.id,
       required this.name,
@@ -150,36 +155,20 @@ class _$CommentImpl extends _Comment {
       _$$CommentImplFromJson(json);
 
   @override
-  final int postId;
+  int postId;
   @override
-  final int id;
+  int id;
   @override
-  final String name;
+  String name;
   @override
-  final String email;
+  String email;
   @override
-  final String body;
+  String body;
 
   @override
   String toString() {
     return 'Comment(postId: $postId, id: $id, name: $name, email: $email, body: $body)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CommentImpl &&
-            (identical(other.postId, postId) || other.postId == postId) &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.body, body) || other.body == body));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, postId, id, name, email, body);
 
   @JsonKey(ignore: true)
   @override
@@ -196,26 +185,31 @@ class _$CommentImpl extends _Comment {
 }
 
 abstract class _Comment extends Comment {
-  const factory _Comment(
-      {required final int postId,
-      required final int id,
-      required final String name,
-      required final String email,
-      required final String body}) = _$CommentImpl;
-  const _Comment._() : super._();
+  factory _Comment(
+      {required int postId,
+      required int id,
+      required String name,
+      required String email,
+      required String body}) = _$CommentImpl;
+  _Comment._() : super._();
 
   factory _Comment.fromJson(Map<String, dynamic> json) = _$CommentImpl.fromJson;
 
   @override
   int get postId;
+  set postId(int value);
   @override
   int get id;
+  set id(int value);
   @override
   String get name;
+  set name(String value);
   @override
   String get email;
+  set email(String value);
   @override
   String get body;
+  set body(String value);
   @override
   @JsonKey(ignore: true)
   _$$CommentImplCopyWith<_$CommentImpl> get copyWith =>

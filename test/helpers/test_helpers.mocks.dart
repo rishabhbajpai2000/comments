@@ -693,4 +693,51 @@ class MockCommentsService extends _i1.Mock implements _i7.CommentsService {
 /// A class which mocks [LoginService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockLoginService extends _i1.Mock implements _i9.LoginService {}
+class MockLoginService extends _i1.Mock implements _i9.LoginService {
+  @override
+  void signUp({
+    required String? name,
+    required String? email,
+    required String? password,
+  }) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #signUp,
+          [],
+          {
+            #name: name,
+            #email: email,
+            #password: password,
+          },
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  _i5.Future<void> signIn({
+    String? email,
+    String? password,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #signIn,
+          [],
+          {
+            #email: email,
+            #password: password,
+          },
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+
+  @override
+  _i5.Future<bool> isSignedIn() => (super.noSuchMethod(
+        Invocation.method(
+          #isSignedIn,
+          [],
+        ),
+        returnValue: _i5.Future<bool>.value(false),
+        returnValueForMissingStub: _i5.Future<bool>.value(false),
+      ) as _i5.Future<bool>);
+}

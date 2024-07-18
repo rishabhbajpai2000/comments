@@ -1,5 +1,6 @@
 import 'package:comments/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:comments/app/app.bottomsheets.dart';
 import 'package:comments/app/app.dialogs.dart';
@@ -12,6 +13,12 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  final remoteConfig = FirebaseRemoteConfig.instance;
+  await remoteConfig.setConfigSettings(RemoteConfigSettings(
+    fetchTimeout: const Duration(minutes: 1),
+    minimumFetchInterval: const Duration(hours: 1),
+  ));
+  await remoteConfig.setDefaults(const {"showFullEmail": true});
   await setupLocator();
   setupDialogUi();
   setupBottomSheetUi();
