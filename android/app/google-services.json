@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "692156371176",
+    "project_id": "comments-d4079",
+    "storage_bucket": "comments-d4079.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:692156371176:android:52ae24719d5fb07760795d",
+        "android_client_info": {
+          "package_name": "com.comment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBn1BMYtiOnP5x5OZuzOU_s7chmooTy27c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:692156371176:android:1f6032a633a8ecae60795d",
+        "android_client_info": {
+          "package_name": "com.example.comments"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBn1BMYtiOnP5x5OZuzOU_s7chmooTy27c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
